@@ -45,9 +45,14 @@ db_configure() {
   fi
 }
 
+pipeline_configure() {
+  site=$1
+  /usr/share/python/odn-ckan-shared/bin/paster --plugin=ckanext-odn-pipeline pipeline-cmd initdb -c /etc/odn-simple/${site}/production.ini
+}
+
 wsgi_configure() {
   site=$1
-  /usr/share/python/odn-ckan-common/bin/paster --plugin=ckan db init -c /etc/odn-simple/${site}/production.ini
+  /usr/share/python/odn-ckan-shared/bin/paster --plugin=ckan db init -c /etc/odn-simple/${site}/production.ini
   a2ensite ${site}
 }
 
@@ -60,8 +65,9 @@ case "$1" in
     default_java
     db_up
     db_configure odn-ckan-ic odn
-    db_configure odn-ckan-pc odn
     wsgi_configure odn-ckan-ic
+    pipeline_configure odn-ckan-ic
+    db_configure odn-ckan-pc odn
     wsgi_configure odn-ckan-pc
     apache_reload
   ;;
