@@ -69,6 +69,8 @@ case "$1" in
     pipeline_configure odn-ckan-ic
     db_configure odn-ckan-pc odn
     wsgi_configure odn-ckan-pc
+    a2disite default
+    a2ensite odn-simple
     apache_reload
   ;;
 
