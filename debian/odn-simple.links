@@ -1,2 +1,3 @@
 etc/odn-simple/odn-ckan-ic/apache.conf etc/apache2/sites-available/odn-ckan-ic
 etc/odn-simple/odn-ckan-pc/apache.conf etc/apache2/sites-available/odn-ckan-pc
+etc/odn-simple/publication/apache.conf etc/apache2/sites-available/odn-publication
